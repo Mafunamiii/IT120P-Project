@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +16,7 @@ import android.widget.ImageView;
 public class HomePageFragment extends Fragment {
 
     // Declare the logout button
-    private Button logoutBtn;
+    private Button logoutBtn, addTransactionBtn, transactionHistoryBtn, viewSummaryBtn;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -23,8 +24,12 @@ public class HomePageFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home_page, container, false);
 
-
+        //Instantiate buttons
         logoutBtn = view.findViewById(R.id.logout_button);
+        addTransactionBtn = view.findViewById((R.id.AddT_button));
+        transactionHistoryBtn = view.findViewById((R.id.TransactH_button));
+        viewSummaryBtn = view.findViewById((R.id.ViewS_button));
+
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -37,7 +42,39 @@ public class HomePageFragment extends Fragment {
             }
         });
 
+        addTransactionBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AddTransaction.class);
+                Log.d("myTag",  "The activity is: "+ intent.getComponent().getClassName());
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+
+        transactionHistoryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), TransactionHistory.class);
+                Log.d("myTag",  "The activity is: "+ intent.getComponent().getClassName());
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+
+        viewSummaryBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), AddTransaction.class);
+                Log.d("myTag",  "The activity is: "+ intent.getComponent().getClassName());
+                startActivity(intent);
+                getActivity().finish();
+            }
+        });
+
         // Inflate the layout for this fragment
         return view;
     }
+
+
 }
