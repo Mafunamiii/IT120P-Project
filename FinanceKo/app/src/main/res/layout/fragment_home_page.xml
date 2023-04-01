@@ -1,0 +1,75 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HomePageFragment"
+    android:background="@drawable/gradientbg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/horlogo_imageview"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:src="@drawable/horlogo" />
+
+        <Button
+            android:id="@+id/AddT_button"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/shadowbtns"
+            android:drawableLeft="@drawable/addtransact"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="Add Transaction" />
+
+        <Button
+            android:id="@+id/TransactH_button"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:background="@drawable/shadowbtns"
+            android:drawableLeft="@drawable/histtransact"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="View Transaction History" />
+
+        <Button
+            android:id="@+id/ViewS_button"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="45dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/shadowbtns"
+            android:drawableLeft="@drawable/viewsum"
+            android:paddingLeft="51dp"
+            android:paddingRight="51dp"
+            android:text="View Summary" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/logout_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:radius="35dp"
+        android:background="@drawable/shadowbtns"
+        android:drawableLeft="@drawable/logout_icon"
+        android:text="Logout" />
+
+
+
+</RelativeLayout>
