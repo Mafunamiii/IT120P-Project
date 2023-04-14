@@ -42,31 +42,30 @@
         android:text="Register" />
 
 
-
     <RelativeLayout
-            android:id="@+id/registration_container"
-            android:layout_width="340dp"
-            android:layout_height="400dp"
-            android:layout_below="@id/backBtn"
-            android:layout_centerInParent="true"
-            android:layout_marginTop="-6dp"
-            android:background="@drawable/floatingwindow"
-            android:padding="16dp">
+        android:id="@+id/registration_container"
+        android:layout_width="340dp"
+        android:layout_height="400dp"
+        android:layout_below="@id/backBtn"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="-6dp"
+        android:background="@drawable/floatingwindow"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/registration_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom = "30dp"
+            android:paddingBottom="30dp"
             android:text="Registration Form"
             android:textSize="24sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@+id/registration_title">
->
+            >
 
             <RelativeLayout
                 android:id="@+id/detailsContainer"
@@ -75,114 +74,125 @@
                 android:layout_below="@+id/registration_title"
                 android:layout_centerInParent="true">
 
-            <EditText
-                android:id="@+id/newusername_edittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
+                <EditText
+                    android:id="@+id/newusername_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
 
-                android:hint="Username"
-                android:inputType="text"
-                android:background="@drawable/shadow"
-                android:padding="14dp" />
-            <TextView
-                android:id="@+id/Usernametxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/newusername_edittext"
-                android:text="     Username"
-                android:textSize="15sp"
-                android:textStyle="bold"/>
-            <EditText
-                android:id="@+id/newpassword_edittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
-                android:layout_below="@+id/Usernametxt"
-                android:hint="Password"
-                android:inputType="textPassword"
-                android:background="@drawable/shadow"
-                android:padding="14dp" />
-            <TextView
-                android:id="@+id/Passwordtxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/newpassword_edittext"
-                android:text="     Password"
-                android:textSize="15sp"
-                android:textStyle="bold"/>
-            <EditText
-                android:id="@+id/confirmpassword_edittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
-                android:layout_below="@+id/Passwordtxt"
-                android:hint="Confirm password"
-                android:inputType="textPassword"
-                android:background="@drawable/shadow"
-                android:padding="14dp" />
-            <TextView
-                android:id="@+id/confPasswordtxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/confirmpassword_edittext"
-                android:text="     Confirm password"
-                android:textSize="15sp"
-                android:textStyle="bold"/>
-            <EditText
-                android:id="@+id/NewFName_edittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
-                android:layout_below="@+id/confPasswordtxt"
-                android:hint="First name"
-                android:inputType="text"
-                android:background="@drawable/shadow"
-                android:padding="14dp" />
-            <TextView
-                android:id="@+id/NewFNametxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/NewFName_edittext"
-                android:text="     First name"
-                android:textSize="15sp"
-                android:textStyle="bold"/>
-            <EditText
-                android:id="@+id/NewLName_edittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
-                android:layout_below="@+id/NewFNametxt"
-                android:hint="Last name"
-                android:inputType="text"
-                android:background="@drawable/shadow"
-                android:padding="14dp" />
-            <TextView
-                android:id="@+id/NewLNametxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/NewLName_edittext"
-                android:text="     Last name"
-                android:textSize="15sp"
-                android:textStyle="bold"/>
-            <EditText
-                android:id="@+id/Newemail_edittext"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="9dp"
-                android:layout_below="@+id/NewLNametxt"
-                android:hint="E-mail Address"
-                android:inputType="text"
-                android:background="@drawable/shadow"
-                android:padding="14dp" />
-            <TextView
-                android:id="@+id/Newemailtxt"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/Newemail_edittext"
-                android:text="     E-mail Address"
-                android:textSize="15sp"
-                android:textStyle="bold"/>
+                    android:background="@drawable/shadow"
+                    android:hint="Username"
+                    android:inputType="text"
+                    android:padding="14dp" />
+
+                <TextView
+                    android:id="@+id/Usernametxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/newusername_edittext"
+                    android:text="     Username"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/newpassword_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Usernametxt"
+                    android:layout_marginTop="9dp"
+                    android:background="@drawable/shadow"
+                    android:hint="Password"
+                    android:inputType="textPassword"
+                    android:padding="14dp" />
+
+                <TextView
+                    android:id="@+id/Passwordtxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/newpassword_edittext"
+                    android:text="     Password"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/confirmpassword_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Passwordtxt"
+                    android:layout_marginTop="9dp"
+                    android:background="@drawable/shadow"
+                    android:hint="Confirm password"
+                    android:inputType="textPassword"
+                    android:padding="14dp" />
+
+                <TextView
+                    android:id="@+id/confPasswordtxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/confirmpassword_edittext"
+                    android:text="     Confirm password"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/NewFName_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/confPasswordtxt"
+                    android:layout_marginTop="9dp"
+                    android:background="@drawable/shadow"
+                    android:hint="First name"
+                    android:inputType="text"
+                    android:padding="14dp" />
+
+                <TextView
+                    android:id="@+id/NewFNametxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/NewFName_edittext"
+                    android:text="     First name"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/NewLName_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/NewFNametxt"
+                    android:layout_marginTop="9dp"
+                    android:background="@drawable/shadow"
+                    android:hint="Last name"
+                    android:inputType="text"
+                    android:padding="14dp" />
+
+                <TextView
+                    android:id="@+id/NewLNametxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/NewLName_edittext"
+                    android:text="     Last name"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/Newemail_edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/NewLNametxt"
+                    android:layout_marginTop="9dp"
+                    android:background="@drawable/shadow"
+                    android:hint="E-mail Address"
+                    android:inputType="text"
+                    android:padding="14dp" />
+
+                <TextView
+                    android:id="@+id/Newemailtxt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/Newemail_edittext"
+                    android:text="     E-mail Address"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
 
             </RelativeLayout>
         </ScrollView>
