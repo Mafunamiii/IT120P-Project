@@ -26,7 +26,7 @@
             android:drawableLeft="@drawable/backbtn"
             android:text="Back" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
@@ -36,8 +36,8 @@
             android:layout_marginBottom="20dp"
             android:layout_marginTop="20dp"
             android:padding="20dp">
-
             <TextView
+                android:id="@+id/TransactionHistory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Transaction History"
@@ -49,6 +49,8 @@
                 />
 
             <TextView
+                android:id="@+id/TableTitle"
+                android:layout_below="@id/TransactionHistory"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Table"
@@ -56,15 +58,25 @@
                 android:textColor="@color/black"
                 />
             <EditText
+                android:id="@+id/Table"
+                android:layout_below="@id/TableTitle"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:maxWidth="480dp"
+                android:layout_height="150dp"
+                android:maxWidth="280dp"
                 android:hint="Table"
                 android:inputType="text"
                 android:background="#f7f7f7"
                 android:layout_marginBottom="30dp"
                 />
-        </LinearLayout>
+            <Button
+                android:id="@+id/ViewHistoryBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/Table"
+                android:text="View Transaction"/>
+
+        </RelativeLayout>
+
     </LinearLayout>
 
 </RelativeLayout>

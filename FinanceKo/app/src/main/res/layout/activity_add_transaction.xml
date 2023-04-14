@@ -26,7 +26,7 @@
             android:drawableLeft="@drawable/backbtn"
             android:text="Back" />
 
-    <LinearLayout
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -37,18 +37,7 @@
         android:layout_marginTop="20dp"
         android:padding="20dp">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Transaction"
-            android:textSize="24dp"
-            android:textColor="@color/black"
-            android:layout_marginBottom="60dp"
-            android:drawableLeft="@drawable/addtransact"
-            android:gravity="center"
-            />
-
-        <TextView
+            <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Category"
@@ -56,6 +45,7 @@
             android:textColor="@color/black"
             />
         <EditText
+            android:id="@+id/category_edittext"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:maxWidth="480dp"
@@ -73,6 +63,7 @@
             android:textColor="@color/black"
             />
         <EditText
+            android:id="@+id/frequency_edittext"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:maxWidth="480dp"
@@ -90,7 +81,7 @@
             android:textColor="@color/black"
             />
         <EditText
-            android:id="@+id/amountTextField"
+            android:id="@+id/amount_edittext"
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:maxWidth="480dp"
@@ -100,9 +91,19 @@
             android:layout_marginBottom="30dp"
             />
 
+            <Button
+                android:id="@+id/addTransactionBtn"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:maxWidth="480dp"
+                android:textSize="20dp"
+                android:hint="Add to expenses"
+                android:background="@color/dgreen"
+                android:layout_marginBottom="30dp"
+                />
+
 
         </LinearLayout>
-
     </LinearLayout>
 
 </RelativeLayout>
