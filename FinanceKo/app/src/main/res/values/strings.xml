@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">FinanceKo</string>
+    <string name="select">Select Category</string>
+
+    <string name="frequency_hint" formatted="false">
+        <font color="#BDBDBD">Frequency</font>
+    </string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

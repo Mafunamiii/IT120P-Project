@@ -47,6 +47,27 @@ public class DBHelper extends SQLiteOpenHelper {
         else
             return true;
     }
+    public Boolean updateDataTransaction( String transCategory, String transFrequency, int transAmount, String id){
+
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        //contentValues.put("transDate",transDate); NEED TO IMPLEMENT TIME
+        contentValues.put("transCategory",transCategory);
+        contentValues.put("transFrequency",transFrequency);
+        contentValues.put("transAmount",transAmount);
+        Cursor cursor = MyDB.rawQuery("Select * from transactions where id = ?", new String[]{id});
+        if(cursor.getCount()>0){
+            long result = MyDB.update("transactions", contentValues, "id=?", new String[]{id});
+            if(result == -1){
+                return false;
+            }
+            else
+                return true;
+        }else{
+            return false;
+        }
+    }
+
     public Boolean insertDataUser(String username, String password, String firstname, String lastname, String email){
         SQLiteDatabase MyDB = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -62,6 +83,7 @@ public class DBHelper extends SQLiteOpenHelper {
         else
             return true;
     }
+
 
     public Boolean checkUsername(String username){
         SQLiteDatabase MyDB = this.getWritableDatabase();
@@ -113,5 +135,26 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return userID;
     }
+
+    //Returns transactions that is owned by the inputUserID
+    public Cursor getDataTransaction(int inputUserID){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select *  from transactions where userID = ?", new String[]{String.valueOf(inputUserID)});
+        return cursor;
+    }
+
+    //Returns all transaction data
+    public Cursor getDataTransactionAll(){
+        SQLiteDatabase DB = this.getWritableDatabase();
+        Cursor cursor = DB.rawQuery("Select *  from transactions", null);
+        return cursor;
+    }
+
+    public boolean deleteDataTransaction(String id) {
+        SQLiteDatabase MyDB = this.getWritableDatabase();
+        return MyDB.delete("transactions", "id=?", new String[]{String.valueOf(id)}) > 0;
+    }
+
+
 
 }

@@ -10,6 +10,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -21,8 +24,17 @@ import java.util.Locale;
 
 public class AddTransaction extends AppCompatActivity {
     DBHelper DB;
-    EditText category, frequency, amount;
+    EditText amount;
     Button backBtn, addTransactionBtn;
+
+    String[] Categories = {"Transportation", "Bills", "Necessity", "Food", "Others"};
+    String[] Frequency = {"Once", "Daily", "Monthly", "Yearly"};
+    AutoCompleteTextView categoryDropDown, frequencyDropDown;
+    ArrayAdapter<String> adapterItemCategory, adapterItemFrequency;
+
+    //Values to be inserted on add transaction
+    String categoryInput = null, frequencyInput = null;
+    String selectedItemCategory = null, selectedItemFrequency = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,11 +43,34 @@ public class AddTransaction extends AppCompatActivity {
 
         DB = new DBHelper(this);
 
-        category = findViewById(R.id.category_edittext);
-        frequency = findViewById(R.id.frequency_edittext);
         amount = findViewById(R.id.amount_edittext);
         backBtn = findViewById(R.id.backBtn);
         addTransactionBtn = findViewById(R.id.addTransactionBtn);
+
+
+
+        //Dropdown Menu CATEGORY
+        categoryDropDown = findViewById(R.id.category_dropdown);
+        adapterItemCategory = new ArrayAdapter<String >(this, android.R.layout.simple_list_item_1, Categories);
+        categoryDropDown.setAdapter(adapterItemCategory);
+        categoryDropDown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedItemCategory = adapterView.getItemAtPosition(i).toString();
+            }
+        });
+
+
+        //Dropdown Menu FREQUENCY
+        frequencyDropDown = findViewById(R.id.frequency_dropdown);
+        adapterItemFrequency = new ArrayAdapter<String >(this, android.R.layout.simple_list_item_1, Frequency);
+        frequencyDropDown.setAdapter(adapterItemFrequency);
+        frequencyDropDown.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                selectedItemFrequency = adapterView.getItemAtPosition(i).toString();
+            }
+        });
 
 
         //Add Transaction
@@ -46,11 +81,13 @@ public class AddTransaction extends AppCompatActivity {
                 int number = 0;
                 boolean isValidAmount = true;
 
-                String categoryInput = category.getText().toString().trim();
-                String frequencyInput = frequency.getText().toString().trim();
-                String amountInput = amount.getText().toString().trim();
 
-                //Convert to int
+                categoryInput = selectedItemCategory;
+                frequencyInput = selectedItemFrequency;
+                String amountInput = amount.getText().toString().trim();
+                String currentDate = null; // NOT YET IMPLEMENTED
+
+                //Convert to amountInput to int
                 try{
                     number = Integer.parseInt(amountInput);
                 }catch (NumberFormatException e){
@@ -64,10 +101,10 @@ public class AddTransaction extends AppCompatActivity {
                     if(isValidAmount){
                         //Get current login-ed user
                         String currentUser = MainActivity.loginUser;
-                        String currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+                        currentDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
 
                         //insert data transaction
-                        Boolean insert = DB.insertDataTransaction("Jahn", "2023-04-14", "None","None", 2342);
+                        Boolean insert = DB.insertDataTransaction(currentUser, "2023-04-14", categoryInput,frequencyInput, number);
                         if(insert)
                             Toast.makeText(AddTransaction.this, "Transaction Added", Toast.LENGTH_SHORT).show();
                         else

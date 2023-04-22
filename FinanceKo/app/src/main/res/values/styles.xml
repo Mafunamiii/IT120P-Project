@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="MyEditTextStyle" parent="Widget.AppCompat.EditText">
+        <item name="android:background">#f7f7f7</item>
+        <item name="android:hint">Frequency</item>
+        <item name="android:textColorHint">@color/gray</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+    </style>
+
+    <style name="CustomAutoCompleteTextViewStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
+        <item name="android:padding">0dp</item>
+    </style>
+
+    <style name="DropdownItemTextAppearance">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+</resources>
