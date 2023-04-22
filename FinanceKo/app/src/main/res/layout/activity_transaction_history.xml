@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradientbg">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,12 +30,12 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/shadowbox_nonbutton"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
             android:padding="20dp">
             <TextView
@@ -43,37 +45,62 @@
                 android:text="Transaction History"
                 android:textSize="24dp"
                 android:textColor="@color/black"
-                android:layout_marginBottom="60dp"
+                android:layout_marginBottom="5dp"
                 android:drawableLeft="@drawable/histtransact"
                 android:gravity="left|center_vertical"
                 />
 
-            <TextView
-                android:id="@+id/TableTitle"
+            <TableLayout
+                android:id="@+id/transactionTable"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_below="@id/TransactionHistory"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Table"
-                android:textSize="16dp"
-                android:textColor="@color/black"
-                />
-            <EditText
-                android:id="@+id/Table"
-                android:layout_below="@id/TableTitle"
-                android:layout_width="match_parent"
-                android:layout_height="150dp"
-                android:maxWidth="280dp"
-                android:hint="Table"
-                android:inputType="text"
-                android:background="#f7f7f7"
-                android:layout_marginBottom="30dp"
-                />
-            <Button
-                android:id="@+id/ViewHistoryBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/Table"
-                android:text="View Transaction"/>
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:stretchColumns="1,2,3,4"
+                tools:context=".TransactionHistory">
+
+                <TableRow>
+                    <TextView
+                        android:id="@+id/tableDate_edittext"
+                        android:layout_column="3"
+                        android:padding="10dp"
+                        android:text="Date"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tableID_edittext"
+                        android:layout_column="1"
+                        android:padding="10dp"
+                        android:text="Category"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tableAmount_edittext"
+                        android:layout_column="2"
+                        android:padding="10dp"
+                        android:text="Amount"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/updateBtnHolder"
+                        android:layout_column="4"
+                        android:layout_width="80dp"/>
+
+                    <TextView
+                        android:id="@+id/deleteBtnHolder"
+                        android:layout_column="4"
+                        android:layout_width="80dp"/>
+                </TableRow>
+                <ScrollView>
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                </ScrollView>
+            </TableLayout>
 
         </RelativeLayout>
 

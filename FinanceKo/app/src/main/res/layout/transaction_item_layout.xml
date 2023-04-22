@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/TransactionHistory"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:stretchColumns="1,2,3"
+    tools:context=".TransactionHistory"
+    android:layout_weight="1">
+
+    <TableRow
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginBottom="4dp"
+        >
+        <TextView
+            android:id="@+id/tableDate"
+            android:layout_column="1"
+            android:padding="5dp"
+            android:textSize="16dp"
+            android:maxWidth="0dp"
+            android:layout_weight="0.2"/>
+
+        <TextView
+            android:id="@+id/tableAmount"
+            android:layout_column="2"
+            android:padding="5dp"
+            android:textSize="16dp"
+            android:maxWidth="0dp"
+            android:layout_weight="0.4"/>
+
+        <TextView
+            android:id="@+id/tableCategory"
+            android:layout_column="3"
+            android:padding="5dp"
+            android:textSize="16dp"
+            android:maxWidth="0dp"
+            android:layout_weight="0.4"/>
+
+        <Button
+            android:id="@+id/updateBtn"
+            android:layout_column="4"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:drawableLeft="@drawable/edit_button"
+            />
+
+        <Button
+            android:id="@+id/deleteBtn"
+            android:layout_column="5"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:drawableLeft="@drawable/delete_button"
+            />
+    </TableRow>
+
+</TableLayout>

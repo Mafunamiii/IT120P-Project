@@ -11,4 +11,5 @@
     <color name="white">#FFFFFFFF</color>
     <color name="buttonColor">#FFFFF7E9</color>
     <color name="statusBar">#304038</color>
+    <color name="gray">#808080</color>
 </resources>
