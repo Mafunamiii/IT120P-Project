@@ -17,8 +17,5 @@ public class HomePageActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.add(R.id.fragment_container, new HomePageFragment());
         fragmentTransaction.commit();
-
-
     }
-
 }

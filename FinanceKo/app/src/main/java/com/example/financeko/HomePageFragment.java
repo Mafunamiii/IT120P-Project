@@ -65,7 +65,7 @@ public class HomePageFragment extends Fragment {
         viewSummaryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), AddTransaction.class);
+                Intent intent = new Intent(getActivity(), Summary.class);
                 Log.d("myTag",  "The activity is: "+ intent.getComponent().getClassName());
                 startActivity(intent);
                 getActivity().finish();

@@ -1,69 +1,668 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradientbg">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/horlogo_imageview"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:src="@drawable/horlogo" />
-
         <Button
             android:id="@+id/backBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
             android:radius="35dp"
             android:background="@drawable/shadowbtns"
             android:drawableLeft="@drawable/backbtn"
             android:text="Back" />
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_marginLeft="45dp"
-            android:layout_marginRight="45dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/shadowbox_nonbutton"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="10dp"
             android:layout_marginTop="20dp"
             android:padding="20dp">
 
-            <TextView
+            <ScrollView
+                android:id="@+id/scroll_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Summary"
-                android:textSize="24dp"
-                android:textColor="@color/black"
-                android:layout_marginBottom="60dp"
-                android:drawableLeft="@drawable/viewsum"
-                android:gravity="center_vertical"
-                />
+                android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Graph"
-                android:textSize="16dp"
-                android:textColor="@color/black"
-                />
-            <EditText
+                <TextView
+                    android:id="@+id/title_frequency"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total Expenses for Each Category"
+                    android:gravity="center"
+                    android:textSize="21dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"
+                    />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_below="@id/title_frequency"
+                    android:id="@+id/frequency_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:maxWidth="480dp"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_marginBottom="10dp"
+                    android:padding="0dp"
+                    android:background="#f7f7f7"
+                    android:textSize="18dp"
+                    >
+                    <AutoCompleteTextView
+                        android:id="@+id/frequency_dropdown"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:inputType="none"
+                        android:gravity="center_vertical"
+                        android:padding="0dp"
+                        android:textSize="18dp"
+                        />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            <com.github.mikephil.charting.charts.BarChart
+                android:id="@+id/barchart"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:maxWidth="480dp"
-                android:hint="Graph"
-                android:inputType="text"
-                android:background="#f7f7f7"
-                android:layout_marginBottom="30dp"
-                />
-        </LinearLayout>
+                android:layout_below="@id/frequency_layout"/>
+
+                <TableLayout
+                    android:id="@+id/first_table"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/barchart"
+                    android:stretchColumns="0,1">
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/mostSpentCategory"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Most Spent Category:"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="right|center_vertical"/>
+
+                        <TextView
+                            android:id="@+id/mostSpentCategoryValue"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="None"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:gravity="left|center_vertical"/>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/leastSpentCategory"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Least Spent Category:"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="right|center_vertical"/>
+
+                        <TextView
+                            android:id="@+id/leastSpentCategoryValue"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="None"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:gravity="left|center_vertical"/>
+                    </TableRow>
+                </TableLayout>
+
+                <TextView
+                    android:id="@+id/title_frequency_second"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total Expenses for Each Frequency"
+                    android:layout_below="@id/first_table"
+                    android:gravity="center"
+                    android:textSize="21dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="30dp"
+                    android:textStyle="bold"
+                    />
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/barchart_frequency"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:layout_below="@id/title_frequency_second"/>
+
+            <TableLayout
+                android:id="@+id/table_frequency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="0,1"
+                android:layout_below="@id/barchart_frequency">
+                <TableRow
+                    android:layout_marginTop="10dp">
+                    <TextView
+                        android:id="@+id/totalTitleFrequency"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Total"
+                        android:textSize="18dp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="5dp"
+                        android:textAlignment="center"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:id="@+id/totalOneTimeExpense"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="One-Time Expense:"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="right|center_vertical"/>
+
+                    <TextView
+                        android:id="@+id/totalOneTimeExpenseValue"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="None"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:gravity="left|center_vertical"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:id="@+id/totalDailyExpense"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Daily Expense:"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="right|center_vertical"/>
+
+                    <TextView
+                        android:id="@+id/totalDailyExpenseValue"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="None"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:gravity="left|center_vertical"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:id="@+id/totalMonthlyExpense"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Monthly Expense:"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="right|center_vertical"/>
+
+                    <TextView
+                        android:id="@+id/totalMonthlyExpenseValue"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="None"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:gravity="left|center_vertical"/>
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:id="@+id/totalYearlyExpense"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Yearly Expense:"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="right|center_vertical"/>
+
+                    <TextView
+                        android:id="@+id/totalYearlyExpenseValue"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="None"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:gravity="left|center_vertical"/>
+                </TableRow>
+
+                <TableRow>
+                    <TextView
+                        android:id="@+id/estimatedMonthlyExpense"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Estimated Monthly Expense (30 days):"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="right|center_vertical"/>
+
+                    <TextView
+                        android:id="@+id/estimatedMonthlyExpenseValue"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="None"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:gravity="left|center_vertical"/>
+                </TableRow>
+                <TableRow>
+                    <TextView
+                        android:id="@+id/estimatedYearlyExpense"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Estimated Yearly Expense (365 days):"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="right|center_vertical"/>
+
+                    <TextView
+                        android:id="@+id/estimatedYearlyExpenseValue"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="None"
+                        android:textSize="18dp"
+                        android:textColor="@color/black"
+                        android:layout_marginBottom="5dp"
+                        android:paddingLeft="10dp"
+                        android:gravity="left|center_vertical"/>
+                </TableRow>
+            </TableLayout>
+                <TextView
+                    android:id="@+id/title_month"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Total Expenses for Each Month"
+                    android:layout_below="@id/table_frequency"
+                    android:gravity="center"
+                    android:textSize="21dp"
+                    android:textColor="@color/black"
+                    android:layout_marginTop="30dp"
+                    android:textStyle="bold"
+                    />
+
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/lineChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_below="@id/title_month"/>
+
+                <TableLayout
+                    android:id="@+id/table_month"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="0,1"
+                    android:layout_below="@id/lineChart">
+                    <TableRow
+                        android:layout_marginTop="10dp">
+                        <TextView
+                            android:id="@+id/totalTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Total"
+                            android:textSize="18dp"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:textAlignment="center"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/January"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="January:"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="right|center_vertical"/>
+
+                        <TextView
+                            android:id="@+id/JanuaryValue"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="None"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:gravity="left|center_vertical"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/February"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="February:"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="right|center_vertical"/>
+
+                        <TextView
+                            android:id="@+id/FebruaryValue"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="None"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:gravity="left|center_vertical"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/March"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="March:"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="right|center_vertical"/>
+
+                        <TextView
+                            android:id="@+id/MarchValue"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="None"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:gravity="left|center_vertical"/>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/April"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="April:"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="right|center_vertical"/>
+
+                        <TextView
+                            android:id="@+id/AprilValue"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="None"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:gravity="left|center_vertical"/>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/May"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="May:"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="right|center_vertical"/>
+
+                        <TextView
+                            android:id="@+id/MayValue"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="None"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:gravity="left|center_vertical"/>
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/June"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="June:"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="right|center_vertical"/>
+
+                        <TextView
+                            android:id="@+id/JuneValue"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="None"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:gravity="left|center_vertical"/>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/July"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="July:"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="right|center_vertical"/>
+
+                        <TextView
+                            android:id="@+id/JulyValue"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="None"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:gravity="left|center_vertical"/>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/August"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="August:"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="right|center_vertical"/>
+
+                        <TextView
+                            android:id="@+id/AugustValue"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="None"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:gravity="left|center_vertical"/>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/September"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="September:"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="right|center_vertical"/>
+
+                        <TextView
+                            android:id="@+id/SeptemberValue"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="None"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:gravity="left|center_vertical"/>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/October"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="October:"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="right|center_vertical"/>
+
+                        <TextView
+                            android:id="@+id/OctoberValue"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="None"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:gravity="left|center_vertical"/>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/November"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="November:"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="right|center_vertical"/>
+
+                        <TextView
+                            android:id="@+id/NovemberValue"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="None"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:gravity="left|center_vertical"/>
+                    </TableRow>
+                    <TableRow>
+                        <TextView
+                            android:id="@+id/December"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="December:"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:gravity="right|center_vertical"/>
+
+                        <TextView
+                            android:id="@+id/DecemberValue"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="None"
+                            android:textSize="18dp"
+                            android:textColor="@color/black"
+                            android:layout_marginBottom="5dp"
+                            android:paddingLeft="10dp"
+                            android:gravity="left|center_vertical"/>
+                    </TableRow>
+                </TableLayout>
+
+            </RelativeLayout>
+            </ScrollView>
+        </RelativeLayout>
+
     </LinearLayout>
 
 </RelativeLayout>
