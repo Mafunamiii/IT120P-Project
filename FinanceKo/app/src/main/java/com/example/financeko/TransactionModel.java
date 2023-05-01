@@ -27,10 +27,10 @@ public class TransactionModel implements Parcelable {
     protected TransactionModel(Parcel in) {
         id = in.readString();
         userID = in.readString();
-        amount = in.readString();
         date = in.readString();
         category = in.readString();
         frequency = in.readString();
+        amount = in.readString();
     }
 
     public static final Creator<TransactionModel> CREATOR = new Creator<TransactionModel>() {
@@ -53,14 +53,12 @@ public class TransactionModel implements Parcelable {
     @Override
     public void writeToParcel(@NonNull Parcel out, int i) {
         out.writeString(id);
-        out.writeString(amount);
-        out.writeString(date);
         out.writeString(userID);
+        out.writeString(date);
         out.writeString(category);
         out.writeString(frequency);
+        out.writeString(amount);
     }
-
-
 
     public String getId() {
         return id;

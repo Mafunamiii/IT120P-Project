@@ -3,6 +3,8 @@ package com.example.financeko;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +15,24 @@ import android.widget.Toast;
 
 import android.os.Bundle;
 
+import java.util.Calendar;
+
+/*
+    Features to be desired:
+    Database Encryption - SQLite does not have encryption, apparently needs some add-ons sheesh
+    Cloud database synchronization - something like firebase to store user data online
+    Responsive design - sheesh very sheesh
+
+    Archive transactions based on frequency -
+        Remove all "Once" transactions from transaction history and store them possibly in another table
+        This will reduce the clutter on transaction history
+
+    More Summary details
+        -Show spending each month
+        -Average spending metrics to get most and least spent category on average
+        -Pie chart because pie is good
+
+     */
 public class MainActivity extends AppCompatActivity {
 
 
@@ -20,6 +40,13 @@ public class MainActivity extends AppCompatActivity {
     EditText username_edittext, password_edittext;
     Button login_button, register_button;
     DBHelper DB;
+
+    //Set calendar
+    static Calendar calendar = Calendar.getInstance();
+    static int year = calendar.get(Calendar.YEAR);
+    static int month = calendar.get(Calendar.MONTH) + 1; // Note: Month value is 0-based, so add 1 to get the actual month value
+    static int day = calendar.get(Calendar.DAY_OF_MONTH);
+    static String currentDate = year + "-" + month + "-" + day; // Format the date as a string (YYYY-MM-DD)
 
 
     @Override
@@ -33,6 +60,19 @@ public class MainActivity extends AppCompatActivity {
         login_button = findViewById(R.id.login_button);
         register_button = findViewById(R.id.register_button);
         DB = new DBHelper(this);
+
+        //Set alarm manager for transactions with frequencies
+        //Alarm to add transaction with frequencies
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        Calendar alarmCalendar = Calendar.getInstance();
+        alarmCalendar.set(Calendar.HOUR_OF_DAY, 0);
+        alarmCalendar.set(Calendar.MINUTE, 0);
+        alarmCalendar.set(Calendar.SECOND, 0);
+
+        // Schedule a repeating alarm that goes off at midnight every day
+        Intent intent = new Intent(this, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
 
 
         // Set onClickListener for login button

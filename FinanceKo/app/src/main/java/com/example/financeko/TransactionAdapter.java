@@ -99,7 +99,10 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
                         if(intent != null){
                             Log.e("Transaction Adapter", "INTENT NOT NULL");
-                            Log.e("Transaction Adapter", "Transaction ID: " + transactionID);
+                            Log.e("Transaction Adapter", "Transaction ID: " + transactionID +
+                                                                "\nCategory: " + model.getCategory() +
+                                                                "\nAmount: " + model.getAmount() +
+                                                                "\nDate: " + model.getDate());
                         }
 
                         // Pass the ID of the transaction to be edited to the EditTransaction activity

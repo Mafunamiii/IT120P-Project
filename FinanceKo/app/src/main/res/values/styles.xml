@@ -13,8 +13,23 @@
         <item name="android:padding">0dp</item>
     </style>
 
+    <style name="MyDatePickerTheme" parent="@style/Theme.AppCompat.Light.Dialog">
+        <item name="colorOnPrimary">@color/black</item>
+    </style>
+
+    <style name="GreenButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:colorPrimary">@color/dgreen</item>
+        <item name="background">@color/dgreen</item>
+        <item name="backgroundColor">@color/dgreen</item>
+    </style>
+
     <style name="DropdownItemTextAppearance">
         <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="whiteButton" parent="@android:style/Widget.Button">
+        <item name="android:background">#f7f7f7</item>
         <item name="android:textColor">@color/black</item>
     </style>
 
